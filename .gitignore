@@ -1,0 +1,7 @@
+django_yaml_redirects.egg-info/
+dist
+*.pyc
+env*/
+*.egg-info/
+.eggs/
+

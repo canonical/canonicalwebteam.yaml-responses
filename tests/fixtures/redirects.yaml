@@ -1,0 +1,2 @@
+hello: /world
+example-(?P<name>.*): http://example.com/{name}
