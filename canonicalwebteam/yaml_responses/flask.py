@@ -139,16 +139,17 @@ def prepare_deleted(path="deleted.yaml", view_callback=_deleted_callback):
         to send the appropriate redirect responses
         """
 
-        for url_match, context in deleted_urls.items():
-            url_match = str(url_match)
+        if deleted_urls:
+            for url_match, context in deleted_urls.items():
+                url_match = str(url_match)
 
-            if url_match[0] != "/":
-                url_match = "/" + url_match
+                if url_match[0] != "/":
+                    url_match = "/" + url_match
 
-            if not context:
-                context = {}
+                if not context:
+                    context = {}
 
-            if re.compile(url_match).fullmatch(flask.request.path):
-                return view_callback(context)
+                if re.compile(url_match).fullmatch(flask.request.path):
+                    return view_callback(context)
 
     return _show_deleted

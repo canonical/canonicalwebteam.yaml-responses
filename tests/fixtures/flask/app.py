@@ -22,7 +22,13 @@ app_redirects = Flask("redirects", template_folder=f"{this_dir}/templates")
 app_permanent_redirects = Flask(
     "redirects", template_folder=f"{this_dir}/templates"
 )
+app_empty_redirects = Flask(
+    "empty_redirects", template_folder=f"{this_dir}/templates"
+)
 app_deleted = Flask("deleted", template_folder=f"{this_dir}/templates")
+app_empty_deleted = Flask(
+    "empty_deleted", template_folder=f"{this_dir}/templates"
+)
 app_deleted_callback = Flask(
     "deleted_callback", template_folder=f"{this_dir}/templates"
 )
@@ -36,6 +42,12 @@ app_permanent_redirects.before_request(
 app_deleted.before_request(prepare_deleted(path=f"{parent_dir}/deleted.yaml"))
 app_deleted_callback.before_request(
     prepare_deleted(path=f"{parent_dir}/deleted.yaml", view_callback=callback)
+)
+app_empty_redirects.before_request(
+    prepare_redirects(path=f"{parent_dir}/empty.yaml")
+)
+app_empty_deleted.before_request(
+    prepare_deleted(path=f"{parent_dir}/empty.yaml")
 )
 
 

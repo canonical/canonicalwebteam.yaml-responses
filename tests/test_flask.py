@@ -10,6 +10,8 @@ from canonicalwebteam.yaml_responses.flask import (
 from tests.fixtures.flask.app import (
     app_redirects,
     app_permanent_redirects,
+    app_empty_redirects,
+    app_empty_deleted,
     app_deleted,
     app_deleted_callback,
 )
@@ -26,6 +28,7 @@ class TestFlaskRedirects(unittest.TestCase):
 
         self.app_redirects = app_redirects.test_client()
         self.app_permanent_redirects = app_permanent_redirects.test_client()
+        self.app_empty_redirects = app_empty_redirects.test_client()
 
     def test_missing_file(self):
         """
@@ -41,6 +44,16 @@ class TestFlaskRedirects(unittest.TestCase):
         """
 
         redirect_missing = self.app_redirects.get("/hello-missing")
+
+        self.assertEqual(redirect_missing.status_code, 404)
+
+    def test_not_found_empty_yaml(self):
+        """
+        When Flask is given an empty redirects file,
+        check 404s still work
+        """
+
+        redirect_missing = self.app_empty_redirects.get("/hello-missing")
 
         self.assertEqual(redirect_missing.status_code, 404)
 
@@ -105,6 +118,7 @@ class TestFlaskDeleted(unittest.TestCase):
 
         self.app_deleted = app_deleted.test_client()
         self.app_deleted_callback = app_deleted_callback.test_client()
+        self.app_empty_deleted = app_empty_deleted.test_client()
 
     def test_missing_file(self):
         """
@@ -113,6 +127,33 @@ class TestFlaskDeleted(unittest.TestCase):
         """
 
         prepare_deleted(path="/tmp/non-existent-file.yaml")
+
+    def test_empty_file(self):
+        """
+        When given an empty file path,
+        prepare_redirects should not error
+        """
+
+        prepare_deleted(path="{this_dir}/fixtures/empty.yaml")
+
+    def test_not_found(self):
+        """
+        When Flask has deleteds, check 404s still work
+        """
+
+        deleted_missing = self.app_deleted.get("/deleted/missing")
+
+        self.assertEqual(deleted_missing.status_code, 404)
+
+    def test_not_found_empty_yaml(self):
+        """
+        When Flask is given an empty deleted file,
+        check 404s still work
+        """
+
+        deleted_missing = self.app_empty_deleted.get("/deleted/missing")
+
+        self.assertEqual(deleted_missing.status_code, 404)
 
     def test_basic_deleted(self):
         """

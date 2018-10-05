@@ -1,1 +1,2 @@
 v1.0.0, 2018-09-21 -- Initial release: A merge of yaml-redirects, yaml-deleted-paths and views-from-yaml
+v1.0.0, 2018-10-05 -- Support empty YAML files

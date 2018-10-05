@@ -24,7 +24,7 @@ settings.configure(
             "BACKEND": "django.template.backends.django.DjangoTemplates",
             "DIRS": [f"{this_dir}/fixtures/django/templates"],
         }
-    ],
+    ]
 )
 django.setup()
 
@@ -129,6 +129,16 @@ class TestDjangoDeleted(unittest.TestCase):
 
         self.assertEqual(
             create_deleted_views(path="/tmp/non-existent-file.yaml"), []
+        )
+
+    def test_empty_file(self):
+        """
+        When given an empty file path,
+        create_deleted_views should return an empty list
+        """
+
+        self.assertEqual(
+            create_deleted_views(path="{this_dir}/fixtures/empty.yaml"), []
         )
 
     @override_settings(ROOT_URLCONF="tests.fixtures.django.deleted_urls")
