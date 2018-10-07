@@ -1,6 +1,6 @@
 # canonicalwebteam.yaml-responses
 
-[![CircleCI build status](https://circleci.com/gh/canonical-webteam/yaml-responses.svg?style=svg)](https://circleci.com/gh/canonical-webteam/yaml-responses)
+[![CircleCI build status](https://circleci.com/gh/canonical-webteam/yaml-responses.svg?style=svg)][circleci] [![Code coverage](https://codecov.io/gh/canonical-webteam/yaml-responses/branch/master/graph/badge.svg)][codecov]
 
 Easily serve `302` and `410` responses with simple YAML files.
 
@@ -160,3 +160,7 @@ This package has evolved from, and is intended to replace, the following project
 - [canonicalwebteam.yaml-redirects](https://github.com/canonical-webteam/yaml-redirects)
 - [canonicalwebteam.yaml-deleted-paths](https://github.com/canonical-webteam/yaml-deleted-paths)
 - [canonicalwebteam.views-from-yaml](https://github.com/canonical-webteam/views-from-yaml)
+
+
+[circleci]: https://circleci.com/gh/canonical-webteam/yaml-responses "CircleCI build status"
+[codecov]: https://codecov.io/gh/canonical-webteam/yaml-responses "Code coverage"

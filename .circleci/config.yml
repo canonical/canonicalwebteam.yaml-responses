@@ -26,7 +26,9 @@ jobs:
           command: pip3 install coverage
       - run:
           name: Run tests with coverage
-          command: coverage run  ./setup.py test
+          command: |
+            coverage run  --source canonicalwebteam ./setup.py test
+            bash <(curl -s https://codecov.io/bash)
 workflows:
   version: 2
   build:
