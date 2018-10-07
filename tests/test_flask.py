@@ -69,6 +69,19 @@ class TestFlaskRedirects(unittest.TestCase):
             redirect.headers.get("Location"), "http://localhost/world"
         )
 
+    def test_query_redirect(self):
+        """
+        When Flask has redirects, check redirect works with query string
+        """
+
+        redirect = self.app_redirects.get("/hello?name=world")
+
+        self.assertEqual(redirect.status_code, 302)
+        self.assertEqual(
+            redirect.headers.get("Location"),
+            "http://localhost/world?name=world",
+        )
+
     def test_permanent_redirect(self):
         """
         When Flask has redirects, check permanent redirects work

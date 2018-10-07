@@ -68,6 +68,21 @@ class TestDjangoRedirects(unittest.TestCase):
         self.assertEqual(redirect.status_code, 302)
         self.assertEqual(redirect.get("Location"), "/world")
 
+    @override_settings(ROOT_URLCONF="tests.fixtures.django.redirects_urls")
+    def test_query_redirect(self):
+        """
+        When create_redirect_views is given a valid redirects.yaml file,
+        and the resulting views are parsed by Django,
+        check Django successfully redirects URL with query string
+        """
+
+        django_client = Client()
+
+        redirect = django_client.get("/hello?name=world")
+
+        self.assertEqual(redirect.status_code, 302)
+        self.assertEqual(redirect.get("Location"), "/world?name=world")
+
     @override_settings(
         ROOT_URLCONF="tests.fixtures.django.permanent_redirects_urls"
     )

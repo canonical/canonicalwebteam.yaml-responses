@@ -50,10 +50,13 @@ def _create_views_from_yaml(yaml_filepath, view_callback, settings={}):
 
 
 def _redirect_to_target(request, url_mapping, settings, *args, **kwargs):
-    return redirect(
-        url_mapping.format(**kwargs),
-        permanent=settings.get("permanent", False),
-    )
+    location = url_mapping.format(**kwargs)
+    query = request.META["QUERY_STRING"]
+
+    if query:
+        location += "?" + query
+
+    return redirect(location, permanent=settings.get("permanent", False))
 
 
 def _deleted_callback(request, url_mapping, settings):
