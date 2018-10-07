@@ -1,5 +1,7 @@
 # canonicalwebteam.yaml-responses
 
+[![CircleCI build status](https://circleci.com/gh/canonical-webteam/yaml-responses.svg?style=svg)](https://circleci.com/gh/canonical-webteam/yaml-responses)
+
 Easily serve `302` and `410` responses with simple YAML files.
 
 This module contains Django and Flask helpers to serve ["302 Found"](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#301) redirect and ["410 Gone"](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#410) deleted responses from lists read from `redirects.yaml` and `deleted.yaml` files contained in the app directory.
