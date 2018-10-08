@@ -15,7 +15,7 @@ jobs:
           command: flake8
       - run:
           name: Check Black has been run
-          command: black --line-length 79 --check
+          command: black --line-length 79 --check canonicalwebteam tests
   tests:
     docker:
       - image: canonicalwebteam/dev
