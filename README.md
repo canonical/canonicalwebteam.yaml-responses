@@ -81,7 +81,7 @@ urlpatterns += ...  # The rest of the views
 E.g.:
 
 ``` python
-def deleted_callback(request, url_mapping, settings):
+def deleted_callback(request, url_mapping, settings, *args, **kwargs):
     return render(request, "errors/410.html", url_mapping, status=410)
 
 urlpatterns = create_deleted_views(
