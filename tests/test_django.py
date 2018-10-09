@@ -9,7 +9,7 @@ from django.test import Client
 from django.test.utils import override_settings
 
 # Local
-from canonicalwebteam.yaml_responses.django import (
+from canonicalwebteam.yaml_responses.django_helpers import (
     create_redirect_views,
     create_deleted_views,
 )
