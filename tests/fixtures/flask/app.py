@@ -5,7 +5,7 @@ import os
 from flask import Flask, render_template
 
 # Local
-from canonicalwebteam.yaml_responses.flask import (
+from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
     prepare_redirects,
 )

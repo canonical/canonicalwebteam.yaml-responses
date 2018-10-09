@@ -3,7 +3,7 @@ import os
 import unittest
 
 # Local
-from canonicalwebteam.yaml_responses.flask import (
+from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
     prepare_redirects,
 )
