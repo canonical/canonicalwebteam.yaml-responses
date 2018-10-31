@@ -47,13 +47,13 @@ For the "deleted" responses, it will look for a template called `410.html` in th
 ``` python
 # urls.py
 from django.conf.urls import url
-from canonicalwebteam.yaml_responses.django import (
+from canonicalwebteam.yaml_responses.django_helpers import (
     create_redirect_views,
     create_deleted_views
 )
 
-urlpatterns = django.create_redirect_views()  # Read redirects.yaml
-urlpatterns += django.create_deleted_views()  # Read deleted.yaml
+urlpatterns = create_redirect_views()  # Read redirects.yaml
+urlpatterns += create_deleted_views()  # Read deleted.yaml
 
 urlpatterns += ...  # The rest of your views
 ```
@@ -109,7 +109,7 @@ For the "deleted" responses, it will look for a template called `410.html` in th
 ``` python
 # app.py
 from flask import Flask
-from canonicalwebteam.yaml_responses.flask import (
+from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
     prepare_redirects,
 )
