@@ -5,6 +5,7 @@ import os
 import yaml
 from django.shortcuts import redirect, render
 from django.conf.urls import url
+from yamlloader import ordereddict
 
 
 def _create_view(view_callback, url_mapping, settings={}):
@@ -36,7 +37,9 @@ def _create_views_from_yaml(yaml_filepath, view_callback, settings={}):
 
     if os.path.isfile(yaml_filepath):
         with open(yaml_filepath) as yaml_paths_file:
-            url_paths = yaml.load(yaml_paths_file.read())
+            url_paths = yaml.load(
+                yaml_paths_file.read(), Loader=ordereddict.CLoader
+            )
             if url_paths:
                 for url_path, url_mapping in url_paths.items():
                     urlpatterns.append(

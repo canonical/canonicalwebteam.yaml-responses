@@ -1,11 +1,11 @@
-# Core
+# Standard library
 import os
 import re
 
-# External
+# Packages
 import flask
 import yaml
-import yamlordereddictloader
+from yamlloader import ordereddict
 
 
 class YamlRegexMap:
@@ -28,9 +28,7 @@ class YamlRegexMap:
 
         if os.path.isfile(filepath):
             with open(filepath) as redirects_file:
-                lines = yaml.load(
-                    redirects_file, Loader=yamlordereddictloader.Loader
-                )
+                lines = yaml.load(redirects_file, Loader=ordereddict.CLoader)
 
                 if lines:
                     for url_match, target_url in lines.items():
@@ -130,7 +128,7 @@ def prepare_deleted(path="deleted.yaml", view_callback=_deleted_callback):
 
     if os.path.isfile(path):
         with open(path) as deleted_file:
-            deleted_urls = yaml.load(deleted_file)
+            deleted_urls = yaml.load(deleted_file, Loader=ordereddict.CLoader)
 
     def _show_deleted():
         """
