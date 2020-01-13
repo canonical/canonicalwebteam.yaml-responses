@@ -1,6 +1,7 @@
 # canonicalwebteam.yaml-responses
 
-[![CircleCI build status](https://circleci.com/gh/canonical-web-and-design/canonicalwebteam.yaml-responses.svg?style=shield)][circleci] [![Code coverage](https://codecov.io/gh/canonical-web-and-design/canonicalwebteam.yaml-responses/branch/master/graph/badge.svg)][codecov]
+[![Tests](https://github.com/canonical-web-and-design/canonicalwebteam.yaml-response/workflows/Tests/badge.svg)](https://github.com/canonical-web-and-design/canonicalwebteam.yaml-response/actions?query=workflow%3ATests)
+[![Code coverage](https://codecov.io/gh/canonical-web-and-design/canonicalwebteam.yaml-responses/branch/master/graph/badge.svg)][codecov]
 
 Easily serve `302` and `410` responses with simple YAML files.
 
