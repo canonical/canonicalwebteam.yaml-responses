@@ -3,3 +3,4 @@ v1.0.1, 2018-10-05 -- Support empty YAML files
 v1.0.2, 2018-10-08 -- Handle extra arguments from views in Django without erroring
 v1.1.0, 2018-10-09 -- Rename django->django_helpers flask->flask_helpers modules to avoid namespace clashes
 v1.1.1, 2019-03-30 -- Security: Always specify loaders when using yaml.load()
+v1.2.0, 2021-05-27 -- Improve query parameter support

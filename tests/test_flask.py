@@ -75,11 +75,17 @@ class TestFlaskRedirects(unittest.TestCase):
         """
 
         redirect = self.app_redirects.get("/hello?name=world")
+        redirect_query = self.app_redirects.get("/hello-query?name=world")
 
         self.assertEqual(redirect.status_code, 302)
+        self.assertEqual(redirect_query.status_code, 302)
         self.assertEqual(
             redirect.headers.get("Location"),
             "http://localhost/world?name=world",
+        )
+        self.assertEqual(
+            redirect_query.headers.get("Location"),
+            "http://localhost/world?query=query&name=world",
         )
 
     def test_permanent_redirect(self):

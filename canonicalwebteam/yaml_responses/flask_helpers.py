@@ -1,6 +1,7 @@
 # Standard library
 import os
 import re
+from urllib.parse import urlparse
 
 # Packages
 import flask
@@ -50,10 +51,20 @@ class YamlRegexMap:
 
                 target_url = target.format(**parts)
 
-                if flask.request.query_string:
-                    target_url += "?" + flask.request.query_string.decode(
-                        "utf-8"
-                    )
+                # Add request query parameters
+                parsed_target_url = urlparse(target_url)
+                target_query = parsed_target_url.query
+                request_query = flask.request.query_string.decode()
+
+                if request_query:
+                    if target_query:
+                        target_url = parsed_target_url._replace(
+                            query=f"{target_query}&{request_query}"
+                        ).geturl()
+                    else:
+                        target_url = parsed_target_url._replace(
+                            query=request_query
+                        ).geturl()
 
                 return target_url
 

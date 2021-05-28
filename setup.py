@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name="canonicalwebteam.yaml-responses",
-    version="1.1.1",
+    version="1.2.0",
     author="Canonical Webteam",
     url="https://github.com/canonical-webteam/yaml-responses",
     packages=["canonicalwebteam.yaml_responses"],
