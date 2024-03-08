@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install system dependencies
       run: |
@@ -22,7 +22,7 @@ jobs:
       run: python3 setup.py sdist bdist_wheel
 
     - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@e777b33388fefa46ce597d8afa9c15a5357af36f
+      uses: pypa/gh-action-pypi-publish@81e9d935c883d0b210363ab89cf05f3894778450
       with:
         user: __token__
         password: ${{ secrets.pypi_password }}
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install system dependencies
       run: |
@@ -44,6 +44,6 @@ jobs:
         python3 -m coverage run  --source canonicalwebteam ./setup.py test
         poetry run coverage xml
 
-    - uses: codecov/codecov-action@v1
+    - uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
